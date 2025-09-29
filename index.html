@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Services Hub</title>
+    <meta name="description" content="Unleash your brand's potential with expert design, web development, and video editing services. Contact us for creative solutions!">
+    <meta name="keywords" content="design, web development, video editing, branding, creative services, logo, website, graphics">
+    <meta name="author" content="Creative Services Hub">
+    <meta property="og:title" content="Creative Services Hub">
+    <meta property="og:description" content="Unleash your brand's potential with expert design, web development, and video editing services.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost:3000/">
+    <meta property="og:image" content="/images/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Creative Services Hub">
+    <meta name="twitter:description" content="Unleash your brand's potential with expert design, web development, and video editing services.">
+    <meta name="twitter:image" content="/images/og-image.png">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XXXXXXXXXX');
+        </script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="flow-bg">
+        <svg width="100%" height="100%" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0;z-index:-1;">
+            <path d="M0,160 C480,320 960,0 1440,160 L1440,800 L0,800 Z" fill="url(#flowGradient)" opacity="0.35"/>
+            <defs>
+                <linearGradient id="flowGradient" x1="0" y1="0" x2="1440" y2="800" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#6a11cb"/>
+                    <stop offset="0.5" stop-color="#8f6ed5"/>
+                    <stop offset="1" stop-color="#2575fc"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
+    <nav class="navbar">
+        <ul role="menubar" aria-label="Main navigation">
+            <li role="none"><a role="menuitem" href="#home" aria-label="Home section">Home</a></li>
+            <li role="none"><a role="menuitem" href="#services" aria-label="Services section">Services</a></li>
+            <li role="none"><a role="menuitem" href="#tools" aria-label="Tools section">Tools</a></li>
+            <li role="none"><a role="menuitem" href="#contact" aria-label="Contact section">Contact</a></li>
+            <li role="none"><a role="menuitem" href="#help" aria-label="Help section">Help</a></li>
+        </ul>
+        <div style="margin-left:2rem;">
+            <select id="langSwitcher" style="padding:0.3rem 1rem;border-radius:1rem;font-size:1rem;">
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+                <option value="ar">العربية</option>
+                <option value="de">Deutsch</option>
+                <option value="es">Español</option>
+            </select>
+        </div>
+    </nav>
+    <header id="home">
+        <h1 id="site-title" tabindex="0" style="
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            letter-spacing: 4px;
+            background: linear-gradient(90deg, #ff512f 0%, #6a11cb 50%, #2575fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 6px 32px rgba(106,17,203,0.22), 0 2px 0 #fff;
+            border-radius: 2rem;
+            padding: 1rem 2.5rem;
+            box-shadow: 0 4px 32px rgba(106,17,203,0.18);
+            display: inline-block;
+            animation: fadeInUp 1.2s cubic-bezier(.77,0,.18,1) both;
+        ">Creative Services Hub</h1>
+        <p>Unleash your brand's potential with our expert design, web development, and video editing services.</p>
+    </header>
+    <section class="services" id="services">
+        <div class="service-card" role="region" aria-labelledby="service-design">
+            <div class="service-icon" aria-hidden="true"><i class="fas fa-paint-brush"></i></div>
+            <div class="service-title" id="service-design">Design</div>
+            <div class="service-desc">Logo, branding, social media graphics, and more. Stand out with unique visuals tailored for your business.</div>
+            <button class="cta" onclick="contactService('Design')" aria-label="Get started with Design service">Get Started</button>
+        </div>
+        <div class="service-card" role="region" aria-labelledby="service-webdev">
+            <div class="service-icon" aria-hidden="true"><i class="fas fa-code"></i></div>
+            <div class="service-title" id="service-webdev">Web Development</div>
+            <div class="service-desc">Custom websites, e-commerce, landing pages, and web apps. Fast, secure, and beautiful solutions for every need.</div>
+            <button class="cta" onclick="contactService('Web Development')" aria-label="Get started with Web Development service">Get Started</button>
+        </div>
+        <div class="service-card" role="region" aria-labelledby="service-video">
+            <div class="service-icon" aria-hidden="true"><i class="fas fa-video"></i></div>
+            <div class="service-title" id="service-video">Video Editing</div>
+            <div class="service-desc">Promotional videos, YouTube content, ads, and more. Professional editing to captivate your audience.</div>
+            <button class="cta" onclick="contactService('Video Editing')" aria-label="Get started with Video Editing service">Get Started</button>
+        </div>
+    </section>
+    <section class="blog" id="blog" style="background:rgba(255,255,255,0.04);padding:2.5rem 0 2rem 0;text-align:center;">
+        <h2 style="font-size:2rem;margin-bottom:1.5rem;font-family:'Montserrat',sans-serif;">Latest News & Articles</h2>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;max-width:900px;margin:0 auto;">
+            <div style="background:rgba(255,255,255,0.10);border-radius:1rem;box-shadow:0 2px 12px rgba(0,0,0,0.10);padding:2rem 1.5rem;width:320px;text-align:left;">
+                <h3 style="color:#6a11cb;font-size:1.3rem;margin-bottom:0.7rem;">How to Make Your Brand Stand Out in 2025</h3>
+                <p style="color:#e3e3e3;font-size:1rem;margin-bottom:1rem;">Discover the latest design and marketing trends to boost your business visibility and engagement.</p>
+                <a href="#" style="color:#ff512f;font-weight:600;">Read More</a>
+            </div>
+            <div style="background:rgba(255,255,255,0.10);border-radius:1rem;box-shadow:0 2px 12px rgba(0,0,0,0.10);padding:2rem 1.5rem;width:320px;text-align:left;">
+                <h3 style="color:#6a11cb;font-size:1.3rem;margin-bottom:0.7rem;">Web Development Tips for Small Businesses</h3>
+                <p style="color:#e3e3e3;font-size:1rem;margin-bottom:1rem;">Learn how to create fast, secure, and beautiful websites that convert visitors into customers.</p>
+                <a href="#" style="color:#ff512f;font-weight:600;">Read More</a>
+            </div>
+            <div style="background:rgba(255,255,255,0.10);border-radius:1rem;box-shadow:0 2px 12px rgba(0,0,0,0.10);padding:2rem 1.5rem;width:320px;text-align:left;">
+                <h3 style="color:#6a11cb;font-size:1.3rem;margin-bottom:0.7rem;">Video Editing: Secrets to Viral Content</h3>
+                <p style="color:#e3e3e3;font-size:1rem;margin-bottom:1rem;">Tips and tricks for creating engaging videos that get shared and grow your audience.</p>
+                <a href="#" style="color:#ff512f;font-weight:600;">Read More</a>
+            </div>
+        </div>
+    </section>
+    <section class="newsletter" id="newsletter" style="background:rgba(255,255,255,0.04);padding:2.5rem 0 2rem 0;text-align:center;">
+        <h2 style="font-size:2rem;margin-bottom:1.5rem;font-family:'Montserrat',sans-serif;">Stay Updated!</h2>
+        <form id="newsletterForm" style="display:flex;flex-direction:column;align-items:center;gap:1rem;max-width:400px;margin:0 auto;">
+            <input type="email" name="email" placeholder="Your Email" required style="width:100%;padding:0.7rem;border-radius:0.7rem;border:none;font-size:1rem;background:#f7f7fa;color:#222;box-shadow:0 2px 8px rgba(30,60,114,0.08);">
+            <button type="submit" class="cta" style="width:100%;">Subscribe</button>
+        </form>
+        <div id="newsletterMsg" style="margin-top:1rem;color:#fff;font-size:1.1rem;"></div>
+    </section>
+
+    <section class="testimonials" id="testimonials" style="background:rgba(255,255,255,0.04);padding:2.5rem 0 2rem 0;text-align:center;">
+        <h2 style="font-size:2rem;margin-bottom:1.5rem;font-family:'Montserrat',sans-serif;">What Our Clients Say</h2>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;max-width:900px;margin:0 auto;">
+            <div style="background:rgba(255,255,255,0.10);border-radius:1rem;box-shadow:0 2px 12px rgba(0,0,0,0.10);padding:2rem 1.5rem;width:320px;text-align:left;">
+                <p style="font-size:1.1rem;color:#fff;margin-bottom:1rem;">“Amazing design work! My brand looks so professional now.”</p>
+                <div style="font-weight:700;color:#6a11cb;">Sarah L.</div>
+                <div style="font-size:0.95rem;color:#e3e3e3;">Startup Founder</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.10);border-radius:1rem;box-shadow:0 2px 12px rgba(0,0,0,0.10);padding:2rem 1.5rem;width:320px;text-align:left;">
+                <p style="font-size:1.1rem;color:#fff;margin-bottom:1rem;">“Fast delivery and a beautiful website. Highly recommended!”</p>
+                <div style="font-weight:700;color:#6a11cb;">Mohammed A.</div>
+                <div style="font-size:0.95rem;color:#e3e3e3;">E-commerce Owner</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.10);border-radius:1rem;box-shadow:0 2px 12px rgba(0,0,0,0.10);padding:2rem 1.5rem;width:320px;text-align:left;">
+                <p style="font-size:1.1rem;color:#fff;margin-bottom:1rem;">“The video editing was top-notch. My YouTube channel is growing!”</p>
+                <div style="font-weight:700;color:#6a11cb;">Carlos M.</div>
+                <div style="font-size:0.95rem;color:#e3e3e3;">Content Creator</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tools" id="tools">
+        <h2>Useful Tools</h2>
+        <div class="tool-list">
+            <div class="tool-card">
+                <h3>Color Palette Generator</h3>
+                <p>Find the perfect color combinations for your brand or project.</p>
+                <button class="cta" onclick="openTool('https://coolors.co/')">Try Now</button>
+            </div>
+            <div class="tool-card">
+                <h3>Image Compressor</h3>
+                <p>Optimize your images for faster website loading.</p>
+                <button class="cta" onclick="openTool('https://imagecompressor.com/')">Compress</button>
+            </div>
+            <div class="tool-card">
+                <h3>Video Editor (Online)</h3>
+                <p>Edit your videos easily before sending them to us.</p>
+                <button class="cta" onclick="openTool('https://www.veed.io/')">Edit Video</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name">
+            <input type="email" name="email" placeholder="Your Email" required aria-label="Your Email">
+            <textarea name="message" placeholder="Your Message" required aria-label="Your Message"></textarea>
+            <button type="submit" class="cta" aria-label="Send Message">Send Message</button>
+        </form>
+        <p style="margin-top:1rem;color:#fff;">Or email us directly: <a href="mailto:aminehaddioui33@icloud.com" style="color:#ff512f;font-weight:bold;">aminehaddioui33@icloud.com</a></p>
+    </section>
+
+    <section class="request">
+    <section class="help" id="help">
+        <h2>Help & Support</h2>
+        <div class="faq">
+            <h3>How do I request a service?</h3>
+            <p>Use the "Request a Service" form above or email us at <a href="mailto:aminehaddioui33@icloud.com">aminehaddioui33@icloud.com</a>.</p>
+            <h3>How can I contact you?</h3>
+            <p>Fill out the contact form or email us directly. We respond within 24 hours.</p>
+            <h3>What services do you offer?</h3>
+            <p>We offer design, web development, and video editing. See the Services section for details.</p>
+        </div>
+    </section>
+        <h2>Request a Service</h2>
+        <form id="requestForm">
+            <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name">
+            <input type="email" name="email" placeholder="Your Email" required aria-label="Your Email">
+            <select name="service" required aria-label="Select Service">
+                <option value="">Select Service</option>
+                <option value="Design">Design</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Video Editing">Video Editing</option>
+            </select>
+            <textarea name="details" placeholder="Describe your project" required aria-label="Project Details"></textarea>
+            <button type="submit" class="cta" aria-label="Request Service">Request Service</button>
+        </form>
+    </section>
+    <footer>
+        &copy; 2025 Creative Services Hub. All rights reserved.<br>
+        Contact: <a href="mailto:aminehaddioui33@icloud.com" style="color:#ff512f;font-weight:bold;">aminehaddioui33@icloud.com</a><br>
+    <a href="privacy.html" style="color:#b0bec5;">Privacy Policy</a> | <a href="terms.html" style="color:#b0bec5;">Terms of Service</a>
+        <div style="margin-top:1.5rem;">
+            <span style="font-weight:600;color:#fff;margin-right:1rem;">Share:</span>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:3000" target="_blank" title="Share on Facebook" style="margin:0 0.5rem;color:#4267B2;"><i class="fab fa-facebook fa-lg"></i></a>
+            <a href="https://twitter.com/intent/tweet?url=http://localhost:3000&text=Check%20out%20Creative%20Services%20Hub!" target="_blank" title="Share on Twitter" style="margin:0 0.5rem;color:#1DA1F2;"><i class="fab fa-twitter fa-lg"></i></a>
+            <a href="https://wa.me/?text=Check%20out%20Creative%20Services%20Hub!%20http://localhost:3000" target="_blank" title="Share on WhatsApp" style="margin:0 0.5rem;color:#25D366;"><i class="fab fa-whatsapp fa-lg"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:3000" target="_blank" title="Share on LinkedIn" style="margin:0 0.5rem;color:#0077b5;"><i class="fab fa-linkedin fa-lg"></i></a>
+        </div>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>
