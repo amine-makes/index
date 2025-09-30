@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const helmet = require('helmet');
@@ -10,9 +11,28 @@ const bcrypt = require('bcryptjs');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Environment validation
+if (!process.env.NETLIFY_DATABASE_URL) {
+    console.error('NETLIFY_DATABASE_URL is required');
+    process.exit(1);
+}
+
+if (!process.env.JWT_SECRET) {
+    console.error('JWT_SECRET is required');
+    process.exit(1);
+}
+
 // Neon database connection
-const sql = neon(); // uses NETLIFY_DATABASE_URL from env
-const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret';
+let sql;
+try {
+    sql = neon(process.env.NETLIFY_DATABASE_URL);
+    console.log('Database connection initialized');
+} catch (error) {
+    console.error('Failed to initialize database connection:', error);
+    process.exit(1);
+}
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // Security middleware
 app.use(helmet());
@@ -21,10 +41,10 @@ app.use(helmet());
 app.use(cors({
     origin: [
         'http://localhost:3000',
-        // Add your production domain here, e.g. 'https://your-app.onrender.com'
-    ],
+        process.env.PRODUCTION_URL
+    ].filter(Boolean),
     methods: ['GET', 'POST'],
-    credentials: false
+    credentials: true
 }));
 
 // Rate limiting

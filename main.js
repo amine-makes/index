@@ -216,50 +216,9 @@ const translations = {
         contactUs: 'Contáctanos',
         readMore: 'Leer más'
     }
-        home: 'Accueil', services: 'Services', tools: 'Outils', contact: 'Contact', help: 'Aide',
-        title: 'Centre de Services Créatifs',
-        tagline: `Libérez le potentiel de votre marque avec nos services experts en design, développement web et montage vidéo.`
-    },
-    ar: {
-        home: 'الرئيسية', services: 'الخدمات', tools: 'الأدوات', contact: 'اتصل بنا', help: 'مساعدة',
-        title: 'مركز الخدمات الإبداعية',
-        tagline: `أطلق إمكانيات علامتك التجارية مع خدماتنا في التصميم وتطوير المواقع وتحرير الفيديو.`
-    },
-    de: {
-        home: 'Startseite', services: 'Dienstleistungen', tools: 'Werkzeuge', contact: 'Kontakt', help: 'Hilfe',
-        title: 'Kreativdienstleistungszentrum',
-        tagline: `Entfesseln Sie das Potenzial Ihrer Marke mit unseren Experten für Design, Webentwicklung und Videobearbeitung.`
-    },
-    es: {
-        home: 'Inicio', services: 'Servicios', tools: 'Herramientas', contact: 'Contacto', help: 'Ayuda',
-        title: 'Centro de Servicios Creativos',
-        tagline: `Libera el potencial de tu marca con nuestros servicios expertos en diseño, desarrollo web y edición de video.`
-    }
 };
 
-document.addEventListener('DOMContentLoaded', function() {
-    const langSwitcher = document.getElementById('langSwitcher');
-    if (langSwitcher) {
-        langSwitcher.addEventListener('change', function() {
-            const lang = langSwitcher.value;
-            setLanguage(lang);
-        });
-    }
-});
 
-function setLanguage(lang) {
-        const t = translations[lang] || translations['en'];
-        // Navbar
-        const navLinks = document.querySelectorAll('.navbar ul li a');
-        const keys = ['home', 'services', 'tools', 'contact', 'help'];
-        navLinks.forEach((a, i) => { a.textContent = t[keys[i]]; });
-        // Title (always English, brand)
-        const titleEl = document.getElementById('site-title');
-        if (titleEl) titleEl.textContent = translations['en'].title;
-        // Tagline
-        const taglineEl = document.querySelector('header p');
-        if (taglineEl) taglineEl.textContent = t.tagline;
-}
 
 // Open external tool links in a new tab
 function openTool(url) {
