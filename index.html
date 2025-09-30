@@ -45,11 +45,11 @@
 
     <nav class="navbar">
         <ul role="menubar" aria-label="Main navigation">
-            <li role="none"><a role="menuitem" href="#home" aria-label="Home section">Home</a></li>
-            <li role="none"><a role="menuitem" href="#services" aria-label="Services section">Services</a></li>
-            <li role="none"><a role="menuitem" href="#tools" aria-label="Tools section">Tools</a></li>
-            <li role="none"><a role="menuitem" href="#contact" aria-label="Contact section">Contact</a></li>
-            <li role="none"><a role="menuitem" href="#help" aria-label="Help section">Help</a></li>
+            <li role="none"><a id="nav-home" role="menuitem" href="#home" aria-label="Home section">Home</a></li>
+            <li role="none"><a id="nav-services" role="menuitem" href="#services" aria-label="Services section">Services</a></li>
+            <li role="none"><a id="nav-tools" role="menuitem" href="#tools" aria-label="Tools section">Tools</a></li>
+            <li role="none"><a id="nav-contact" role="menuitem" href="#contact" aria-label="Contact section">Contact</a></li>
+            <li role="none"><a id="nav-help" role="menuitem" href="#help" aria-label="Help section">Help</a></li>
         </ul>
         <div style="margin-left:2rem;">
             <select id="langSwitcher" style="padding:0.3rem 1rem;border-radius:1rem;font-size:1rem;">
@@ -77,7 +77,7 @@
             display: inline-block;
             animation: fadeInUp 1.2s cubic-bezier(.77,0,.18,1) both;
         ">Creative Services Hub</h1>
-        <p>Unleash your brand's potential with our expert design, web development, and video editing services.</p>
+        <p id="main-tagline">Unleash your brand's potential with our expert design, web development, and video editing services.</p>
     </header>
     <section class="services" id="services">
         <div class="service-card" role="region" aria-labelledby="service-design">

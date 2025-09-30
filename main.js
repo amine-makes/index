@@ -90,14 +90,132 @@ function validateEmail(email) {
     return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
 }
 
-// Simple language translations
+// Language switching functionality
+function setLanguage(lang) {
+    const elements = {
+        'nav-home': translations[lang].home,
+        'nav-services': translations[lang].services,
+        'nav-tools': translations[lang].tools,
+        'nav-contact': translations[lang].contact,
+        'nav-help': translations[lang].help,
+        'main-tagline': translations[lang].tagline,
+        'design-title': translations[lang].design,
+        'webdev-title': translations[lang].webDev,
+        'video-title': translations[lang].videoEdit,
+        'contact-btn': translations[lang].contactUs,
+        'read-more': translations[lang].readMore
+    };
+
+    // Update text content for each element
+    Object.keys(elements).forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.textContent = elements[id];
+        }
+    });
+
+    // Update the language switcher
+    const langSwitcher = document.getElementById('langSwitcher');
+    if (langSwitcher) {
+        langSwitcher.value = lang;
+    }
+
+    // Store the selected language
+    localStorage.setItem('preferredLanguage', lang);
+}
+
+// Initialize language switcher
+document.addEventListener('DOMContentLoaded', function() {
+    const langSwitcher = document.getElementById('langSwitcher');
+    if (langSwitcher) {
+        // Set initial language (stored or default to English)
+        const storedLang = localStorage.getItem('preferredLanguage') || 'en';
+        setLanguage(storedLang);
+
+        // Add change event listener
+        langSwitcher.addEventListener('change', (e) => {
+            setLanguage(e.target.value);
+        });
+    }
+});
+
+// Language translations
 const translations = {
     en: {
-        home: 'Home', services: 'Services', tools: 'Tools', contact: 'Contact', help: 'Help',
+        home: 'Home',
+        services: 'Services',
+        tools: 'Tools',
+        contact: 'Contact',
+        help: 'Help',
         title: 'Creative Services Hub',
-        tagline: `Unleash your brand's potential with our expert design, web development, and video editing services.`
+        tagline: `Unleash your brand's potential with our expert design, web development, and video editing services.`,
+        design: 'Design',
+        webDev: 'Web Development',
+        videoEdit: 'Video Editing',
+        getStarted: 'Get Started',
+        contactUs: 'Contact Us',
+        readMore: 'Read More'
     },
     fr: {
+        home: 'Accueil',
+        services: 'Services',
+        tools: 'Outils',
+        contact: 'Contact',
+        help: 'Aide',
+        title: 'Creative Services Hub',
+        tagline: 'Libérez le potentiel de votre marque avec nos services experts en design, développement web et montage vidéo.',
+        design: 'Design',
+        webDev: 'Développement Web',
+        videoEdit: 'Montage Vidéo',
+        getStarted: 'Commencer',
+        contactUs: 'Contactez-nous',
+        readMore: 'En savoir plus'
+    },
+    ar: {
+        home: 'الرئيسية',
+        services: 'الخدمات',
+        tools: 'الأدوات',
+        contact: 'اتصل بنا',
+        help: 'المساعدة',
+        title: 'Creative Services Hub',
+        tagline: 'أطلق العنان لإمكانات علامتك التجارية مع خدماتنا المتخصصة في التصميم وتطوير الويب وتحرير الفيديو.',
+        design: 'التصميم',
+        webDev: 'تطوير الويب',
+        videoEdit: 'تحرير الفيديو',
+        getStarted: 'ابدأ الآن',
+        contactUs: 'اتصل بنا',
+        readMore: 'اقرأ المزيد'
+    },
+    de: {
+        home: 'Startseite',
+        services: 'Dienstleistungen',
+        tools: 'Werkzeuge',
+        contact: 'Kontakt',
+        help: 'Hilfe',
+        title: 'Creative Services Hub',
+        tagline: 'Entfesseln Sie das Potenzial Ihrer Marke mit unseren Expert-Services für Design, Webentwicklung und Videobearbeitung.',
+        design: 'Design',
+        webDev: 'Webentwicklung',
+        videoEdit: 'Videobearbeitung',
+        getStarted: 'Loslegen',
+        contactUs: 'Kontaktieren Sie uns',
+        readMore: 'Mehr erfahren'
+    },
+    es: {
+        home: 'Inicio',
+        services: 'Servicios',
+        tools: 'Herramientas',
+        contact: 'Contacto',
+        help: 'Ayuda',
+        title: 'Creative Services Hub',
+        tagline: 'Libera el potencial de tu marca con nuestros servicios expertos en diseño, desarrollo web y edición de video.',
+        design: 'Diseño',
+        webDev: 'Desarrollo Web',
+        videoEdit: 'Edición de Video',
+        getStarted: 'Comenzar',
+        contactUs: 'Contáctanos',
+        readMore: 'Leer más'
+    }
         home: 'Accueil', services: 'Services', tools: 'Outils', contact: 'Contact', help: 'Aide',
         title: 'Centre de Services Créatifs',
         tagline: `Libérez le potentiel de votre marque avec nos services experts en design, développement web et montage vidéo.`
