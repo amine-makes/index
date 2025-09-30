@@ -1,5 +1,4 @@
 /* Importing neon from @netlify/neon */
-@import url('@netlify/neon');
 
 /* Navigation Bar */
 .navbar {
@@ -461,10 +460,7 @@ footer {
   }
   
   /* Mobile Touch Feedback */
-  * {
+* {
     -webkit-tap-highlight-color: transparent;
-  }
 }
-
-/* Importing neon from @netlify/neon */
-@import url('@netlify/neon');
+  }
