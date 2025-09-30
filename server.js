@@ -4,8 +4,15 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 const { body, validationResult } = require('express-validator');
+const { neon } = require('@netlify/neon');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Neon database connection
+const sql = neon(); // uses NETLIFY_DATABASE_URL from env
+const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret';
 
 // Security middleware
 app.use(helmet());
@@ -39,6 +46,27 @@ app.get('/api/hello', (req, res) => {
     res.json({ message: 'Welcome to Creative Services Hub API!' });
 });
 
+// Get all posts from Neon database
+app.get('/api/posts', async (req, res) => {
+    try {
+        const posts = await sql`SELECT * FROM posts`;
+        res.json(posts);
+    } catch (err) {
+        res.status(500).json({ error: 'Database error' });
+    }
+});
+
+// Get a post by ID from Neon database
+app.get('/api/posts/:id', async (req, res) => {
+    const postId = req.params.id;
+    try {
+        const [post] = await sql`SELECT * FROM posts WHERE id = ${postId}`;
+        res.json(post);
+    } catch (err) {
+        res.status(500).json({ error: 'Database error' });
+    }
+});
+
 // Contact form endpoint with validation
 app.post('/api/contact',
     [
@@ -57,6 +85,58 @@ app.post('/api/contact',
         res.json({ success: true, message: 'Contact form received.' });
     }
 );
+
+// User registration endpoint
+app.post('/api/register', [
+    body('email').isEmail().normalizeEmail(),
+    body('password').isLength({ min: 6 })
+], async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+    const { email, password } = req.body;
+    try {
+        // Check if user exists
+        const [user] = await sql`SELECT * FROM users WHERE email = ${email}`;
+        if (user) {
+            return res.status(400).json({ error: 'User already exists' });
+        }
+        // Hash password
+        const hashedPassword = await bcrypt.hash(password, 10);
+        await sql`INSERT INTO users (email, password) VALUES (${email}, ${hashedPassword})`;
+        res.json({ success: true, message: 'User registered successfully' });
+    } catch (err) {
+        res.status(500).json({ error: 'Registration error' });
+    }
+});
+
+// User login endpoint
+app.post('/api/login', [
+    body('email').isEmail().normalizeEmail(),
+    body('password').isLength({ min: 6 })
+], async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+    const { email, password } = req.body;
+    try {
+        const [user] = await sql`SELECT * FROM users WHERE email = ${email}`;
+        if (!user) {
+            return res.status(400).json({ error: 'Invalid credentials' });
+        }
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(400).json({ error: 'Invalid credentials' });
+        }
+        // Create JWT
+        const token = jwt.sign({ userId: user.id, email: user.email }, JWT_SECRET, { expiresIn: '2h' });
+        res.json({ success: true, token });
+    } catch (err) {
+        res.status(500).json({ error: 'Login error' });
+    }
+});
 
 // Request service form endpoint with validation
 app.post('/api/request',

@@ -156,9 +156,6 @@ input:focus, textarea:focus, select:focus {
     background: #fff;
     box-shadow: 0 4px 16px rgba(255,81,47,0.10);
 }
-input:focus, textarea:focus, select:focus {
-    outline: 2px solid #ff512f;
-}
 textarea {
     min-height: 80px;
     resize: vertical;
@@ -270,13 +267,6 @@ footer {
     background: rgba(30,60,114,0.85);
     margin-top: 3rem;
 }
-@media (max-width: 900px) {
-    .services {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
 @keyframes glowBorder {
     from {
         box-shadow: 0 0 24px 4px #6a11cb, 0 0 12px 2px #ff512f;
@@ -300,39 +290,87 @@ footer {
 }
 
 @media (max-width: 600px) {
-    header h1 {
-        font-size: 2rem;
-        padding: 0.5rem 0.5rem;
-    }
-    header p {
-        font-size: 1rem;
-        max-width: 95vw;
-    }
-    .navbar ul {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    .navbar li {
-        margin: 0.5rem 0;
-    }
-    .services, .tool-list {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    .service-card, .tool-card {
-        width: 95vw;
-        padding: 1rem 0.5rem;
-    }
-    form {
-        max-width: 95vw;
-        padding: 0 0.5rem;
-    }
-    footer {
-        font-size: 0.9rem;
-        padding: 1rem 0.2rem;
-    }
-    .faq {
-        padding: 1rem;
-        max-width: 95vw;
-    }
+  header h1 {
+    font-size: 2rem;
+    padding: 0.5rem 0.5rem;
+  }
+  header p {
+    font-size: 1rem;
+    max-width: 95vw;
+  }
+  .navbar {
+    padding: 0.5rem;
+  }
+  .navbar ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .navbar li {
+    margin: 0.5rem 0;
+  }
+  #langSwitcher {
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    font-size: 1rem;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 0.5rem;
+  }
+  .services, .tool-list, .testimonials > div, .blog > div {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    display: flex !important;
+  }
+  .service-card, .tool-card, .testimonials > div > div, .blog > div > div {
+    width: 95vw !important;
+    padding: 1rem 0.5rem !important;
+    margin: 0.5rem 0 !important;
+    text-align: center !important;
+  }
+  .newsletter {
+    padding: 1.5rem 0.5rem !important;
+  }
+  .newsletter h2 {
+    font-size: 1.5rem !important;
+  }
+  .newsletter form, .contact form, .request form {
+    max-width: 95vw !important;
+    padding: 0 0.5rem !important;
+  }
+  .faq {
+    padding: 1rem !important;
+    max-width: 95vw !important;
+  }
+  section, header, footer {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  body {
+    background: #222 !important;
+    color: #fff !important;
+  }
+  .service-desc, .tool-card p, .blog p, .testimonials p {
+    color: #e3e3e3 !important;
+    font-size: 0.95rem !important;
+  }
+  .service-title, .tool-card h3, .blog h3, .testimonials div {
+    color: #6a11cb !important;
+    font-size: 1.3rem !important;
+  }
+  .cta {
+    width: 100% !important;
+    font-size: 1rem !important;
+    padding: 0.7rem 0.5rem !important;
+  }
+  footer {
+    font-size: 0.9rem !important;
+    padding: 1rem 0.2rem !important;
+    margin-top: 2rem !important;
+  }
 }
+
+/* Importing neon from @netlify/neon */
+@import url('@netlify/neon');
